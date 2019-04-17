@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Lab Entry Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+    <script   src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="javascript/main.js"></script>
+    
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td style= "width:30%;">
+          <img class = "newappIcon" src="images/Logo.png">
+        </td>
+        <td>
+          <h1 id="message">Lab Entry</h1>
+          <p class='description'></p> Select a Unit <span class = "blue">
+            <select onchange="unitSelected(this.value)">
+            <option value="">--Select--</option>
+            <option value="SIT772">SIT772</option>
+            <option value="SIT708">SIT708</option>
+            <option value="SIT732">SIT732</option>
+            <option value="SIT788">SIT788</option>
+          </select></span>
+        </td>
+      </tr>
+    </table>
+    <div id="studentTable"> </div>
+  </body>
+
+</html>
