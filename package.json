@@ -7,9 +7,12 @@
 	},
 	"dependencies": {
 		"@cloudant/cloudant": "^2.4.1",
+		"body-parser": "^1.19.0",
 		"cfenv": "1.0.x",
 		"express": "^4.15.5",
-		"nodemon": "^1.18.11"
+		"nodemon": "^1.18.11",
+		"primeicons": "^1.0.0",
+		"primeng": "^7.1.2"
 	},
 	"repository": {},
 	"engines": {
