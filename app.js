@@ -21,9 +21,8 @@ app.get('/getStudentsData', function (req, res) {
     console.log("Data:", data);
     res.send(data);
   });
-
-
 })
+
 app.get('/getLoginData', function (req, res) {
   var i = cloudant.db.use('login_data');
   i.get("login_data", function (err, data) {
@@ -40,6 +39,11 @@ app.get('/unitsInfo', function (req, res) {
   console.log(__dirname + '/public');
   res.sendFile(__dirname + '/public/pages/unitsInfo.html');
   console.log("/login working");
+})
+app.get('/checkID', function (req, res) {
+  console.log(__dirname + '/public');
+  res.sendFile(__dirname + '/public/pages/checkID.html');
+  console.log("/CheckID working");
 })
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
