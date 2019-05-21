@@ -29,10 +29,7 @@ $(document).ready(function () {
             console.log("Unit Selected:", unit);
             displayStudents(unit, tri, year);
         }
-        else {
-            alert("Please select a unit");
-            console.log("Unit is not selected");
-        }
+        
     })
 
     $("#eqn-bg").click(function (e) {
@@ -45,7 +42,30 @@ $(document).ready(function () {
         if (unit != "" || studentID != "") {
             // AJAX call
             //if else 
-            alert("Student has completed the pre-requisites for the unit:" + unit);
+            var comp= false;
+            document.getElementById("alert").style.display="block";
+            document.getElementById("completed").style.display="none";
+            document.getElementById("notCompleted").style.display="none";
+            
+            for(var i=0;i<data.length;i++)
+            {
+                if( data[i].id==studentID && data[i].unit_enrolled==unit)
+                {
+                    comp=true; 
+                }
+                
+            }
+            if(comp)
+            {
+                document.getElementById("completed").style.display="block";
+            }
+            else
+            {
+                document.getElementById("notCompleted").style.display="block";
+            }
+            
+            
+            
         }
     })
     // Method that reads and processes the selected file
@@ -60,7 +80,7 @@ $(document).ready(function () {
             reader.onload = function (event) {
                 var csv = event.target.result;
                 console.log(csv);
-                var lines = csv.split("\n");
+                var lines = csv.split("\r\n");
 
                 var result = [];
 
@@ -88,6 +108,8 @@ $(document).ready(function () {
                 // } else {
                 //     alert('No data to import!');
                 // }
+                result= result;
+                viewData(result);
             };
             reader.onerror = function () {
                 alert('Unable to read ' + file.fileName);
@@ -114,19 +136,14 @@ $(document).ready(function () {
         elem[i].addEventListener("click", function () {
             output = screen.innerHTML;
             limit = output.length;
-            if (limit < 10) {
+            if (limit < 9) {
 
                 num = this.value;
 
                 output = screen.innerHTML += num;
 
             }
-            if (limit > 10) {
-
-                alert("Sorry no more input is allowed");
-
-            }
-
+            
         }, false);
 
     }
@@ -159,6 +176,34 @@ $(document).ready(function () {
 
 
 });
+
+function viewData(result)
+
+{
+    var viewTable="<table ><tr><td style='width: 80px;background-color: #13554b; text-align: center'>STUDENT ID</td>";
+    viewTable += "<td style='width: 80px; text-align: center;background-color: #13554b;'>STUDENT NAME</td>";
+    viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>UNIT ENROLLED</td>";
+    viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>YEAR</td>";
+    viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>TRIMESTER</td>";
+    viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>PRE REQUISITE COMPLETED</td></tr>";
+    viewTable += "<tbody id='myTable'>";
+
+    for (var i = 0; i < result.length-1; i++) {
+        
+        viewTable += "<tr><td style='width: 80px; text-align: center;'>" + result[i].id + "</td>";
+        viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].name + "</td>";
+        viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].unit_enrolled + "</td>";
+        viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].year + "</td>";
+        viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].trimester + "</td>";
+        viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].preRequisite + "</td></tr>";
+        
+    }
+
+    viewTable += "</tbody></table>"
+    document.getElementById("studentTable").innerHTML = viewTable;
+    document.getElementById("viewTable").style.display = "table-cell";
+
+}
 
 
 function displayStudents(unit, tri, year) {
@@ -195,4 +240,7 @@ function displayStudents(unit, tri, year) {
     document.getElementById("viewTable").style.display = "table-cell";
 }
 
-
+function closeAlert()
+{
+    document.getElementById("alert").style.display="none";
+}

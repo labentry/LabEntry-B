@@ -433,3 +433,61 @@ button
 	font-size: 18px;
 	width: 120px;
 }
+#error
+{
+	color:red;
+	display: none;
+}
+#completed
+{
+	border: 1px solid green;
+    color: green;
+    display: none;
+    background-color: #dff0d8;
+    border-color: #d0e9c6;
+    /* width: 45%; */
+    padding: 8px;
+    /* height: 75px; */
+    float: right;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	animation: entrance s ease-out 1;
+	
+}
+#notCompleted
+{
+	border:1px solid red; 
+	color:red;
+	display: none; 
+	background-color: #f2dede;
+	border-color: #ebcccc;
+	/* width: 45%; */
+    padding: 8px;
+    /* height: 75px; */
+    float: right;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	animation: entrance 8s ease-out 1;
+}
+#alert{
+	position: absolute;
+    top: 50px;
+    right: 100px;
+}
+@keyframes entrance {
+	0% {
+	  opacity: 0;
+	  /* transform: scale(1.5) translateY(-0.75em); */
+	}
+	10%{
+		opacity: 0.5;
+	}
+	50%{
+		opacity: 1;
+	}
+	100% {
+	  opacity: 1;
+	  
+	  /* transform: translateZ(-1000em); */
+	}
+  }

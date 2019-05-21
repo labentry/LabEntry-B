@@ -1,10 +1,11 @@
 var data;
 $(document).ready(function () {
+    // Brings the username and password from db
     $.get('/getLoginData', function (result) {
         data = result.users;
         console.log(data);
     });
-    
+    // Form to submit
     $("#login_form").submit(function(e){
         e.preventDefault();
         var username= document.getElementById("username").value;
@@ -14,9 +15,9 @@ $(document).ready(function () {
                 if (data[i].password == password) {
                     console.log("Successfully Logged in");
                     window.location.href = '/unitsInfo';
-    
                 }
                 else {
+                    document.getElementById("error").style.display="Block";
                     console.log("Either Wrong username or password");
                 }
             }
