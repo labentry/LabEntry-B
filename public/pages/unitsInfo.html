@@ -23,148 +23,209 @@
 
 <body class="main-bg">
   <div>
-  <div class="deakin_header">
-    <!-- <span> -->
-    <img class="deakin_header_image" src="images/logo_deakin2.png">
-    <!-- <input class="form-control search" id="myInput" type="text" placeholder="Search..">
+    <div class="deakin_header">
+      <!-- <span> -->
+      <img class="deakin_header_image" src="images/logo_deakin2.png">
+      <!-- <input class="form-control search" id="myInput" type="text" placeholder="Search..">
     <h2>Lab Entry</h2></span>
      -->
-  </div>
-  <div class="container">
-
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a data-toggle="tab" href="#home">Unit Info</a>
-      </li>
-      <li>
-        <a data-toggle="tab" href="#menu1">Check ID</a>
-      </li>
-      <!-- <li>
+    </div>
+    <div class="container">
+      <div class="row">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#home">Unit Info</a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#menu1">Check ID</a>
+          </li>
+          <!-- <li>
         <a data-toggle="tab" href="#menu2">CheckID</a>
       </li> -->
-      <!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
-    </ul>
-
-    <div class="tab-content">
-      <div id="home" class="tab-pane fade in active">
-        <div>
-          <table>
-
-            <tr>
-              <td>
-                <div style="margin:8px;">
-                  <div class='description' style="display: inline-block; margin-left: 20px;color:white;">Unit
-                    <span class="blue">
-                      <select onchange="unitSelected(this.value)" style="color:black;" >
-                        <option value="">--Select--</option>
-                        <option value="SIT772">SIT772</option>
-                        <option value="SIT708">SIT708</option>
-                        <option value="SIT732">SIT732</option>
-                        <option value="SIT788">SIT788</option>
-                      </select>
-                    </span>
-                  </div>
-                  <fieldset style="float:right; color:white">
-
-                      <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
-                    </fieldset>
-                  
-                </div>
-                <!-- <div id="dvImportSegments" class="fileupload "> -->
-              </td>
-            </tr>
-            <tr>
-              <td  id="viewTable" style="display: none;">
-                <!-- style="margin: 8px; color:white;" -->
-                <div >
-                    <!-- <span> -->
-                        <input class="form-control" style="display: inline-block; width:400px;" id="myInput" type="text" placeholder="Search..">
-                      <!-- </span> -->
-                  <!-- </div> -->
-                  <a download="somedata.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');" style="float:right; margin-left: 320px;">
-                    <img id="exportCSV" src="images/csv.png" class="csv" > </a>
-                </div>
-
-              </td>
-            </tr>
-
-          </table>
-        </div>
-
-        <div id="studentTable"></div>
-
-
+          <!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
+        </ul>
       </div>
-      <div id="menu1" class="tab-pane fade">
-          <br>
-          <div class='description' style="display: inline-block; margin-left: 20px;color:#0c8573;">Unit
-              <span class="blue">
-                <select onchange="unitSelected(this.value)" style="color:black;" id="Unit">
-                  <option value="">--Select--</option>
-                  <option value="SIT772">SIT772</option>
-                  <option value="SIT708">SIT708</option>
-                  <option value="SIT732">SIT732</option>
-                  <option value="SIT788">SIT788</option>
-                </select>
-              </span>
-            </div>
-        <div class="container">
-          <!-- Main background -->
-          <div class="row">
-            <div id="result" class="resultBar col-lg-6"></div>
-            <span>
-              <button class="del-bg" id="delete">DELETE</button>
-              <button value="check" id="eqn-bg" onclick="checkID()">CHECK</button>
-            </span>
-          </div>
+      <div class="row">
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
             <br>
-            <div id="main">
-              <div class="row">
+            <div class="col-lg-3 filter">
 
-                <!-- <button value="%" class="btn-style operator opera-bg fall-back">%</button> -->
-                <!-- <button value="+" class="btn-style opera-bg value align operator">+</button> -->
-              </div>
+              <form  id="form1" method="post">
+                <div class="form-group white">Unit
+                  <span class="blue">
+                    <select id="Unit1" class="form-control" style="color:black;" required>
+                      <option value="">--Select--</option>
+                      <option value="SIT772">SIT772</option>
+                      <option value="SIT708">SIT708</option>
+                      <option value="SIT732">SIT732</option>
+                      <option value="SIT788">SIT788</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="form-group white">Trimester
+                  <span class="blue">
+                    <select id="tri" class="form-control" style="color:black;" required>
+                      <option value="">--Select--</option>
+                      <option value="T1">T1</option>
+                      <option value="T2">T2</option>
+                      <option value="T3">T3</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="form-group white">Year
+                  <span class="blue">
+                    <select id="year" class="form-control" style="color:black;" required>
+                      <option value="">--Select--</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="form-group">
+                  <input type="submit" class="btn btn-success submit-btn" value="Search" />
+                </div>
+                <div class="white center">
+                  <h4>--OR--</h4>
+                </div>
+                <div class="form-group white">
 
-              <div class="rows">
-                <button value="7" class="btn-style num-bg num first-child">7</button>
-                <button value="8" class="btn-style num-bg num">8</button>
-                <button value="9" class="btn-style num-bg num">9</button>
-                <!-- <button value="-" class="btn-style opera-bg operator">-</button> -->
-              </div>
+                  <fieldset>
 
-              <div class="rows">
-                <button value="4" class="btn-style num-bg num first-child">4</button>
-                <button value="5" class="btn-style num-bg num">5</button>
-                <button value="6" class="btn-style num-bg num">6</button>
-                <!-- <button value="*" class="btn-style opera-bg operator">x</button> -->
-              </div>
+                    <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" class="form-control" />
+                  </fieldset>
 
-              <div class="rows">
-                <button value="1" class="btn-style num-bg num first-child">1</button>
-                <button value="2" class="btn-style num-bg num">2</button>
-                <button value="3" class="btn-style num-bg num">3</button>
-                <!-- <button value="/" class="btn-style opera-bg operator">/</button> -->
-              </div>
+                </div>
+              </form>
+            </div>
+            <div>
+              <table>
 
-              <div class="rows">
-                <button value="0" class="btn-style num-bg num first-child zero" id="delete">0</button>
-                <!-- <button value="." class="btn-style num-bg period fall-back">.</button> -->
-                <!-- <button value="=" id="eqn-bg" class="eqn align">=</button> -->
-              </div>
+                <tr>
+                  <td id="viewTable" style="display: none;">
+                    <!-- style="margin: 8px; color:white;" -->
+                    <div>
+                      <!-- <span> -->
+                      <input class="form-control" style="display: inline-block; width:400px;" id="myInput" type="text" placeholder="Search..">
+                      <!-- </span> -->
+                      <!-- </div> -->
+                      <a download="somedata.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');" style="float:right; margin-left: 320px;">
+                        <img id="exportCSV" src="images/csv.png" class="csv"> </a>
+                    </div>
 
+                  </td>
+                </tr>
+
+              </table>
             </div>
 
-         
+            <div id="studentTable"></div>
+
+
+          </div>
+          <div id="menu1" class="tab-pane fade">
+            <br>
+            <div class="col-lg-3 filter">
+              <form>
+                <div class="form-group white">Unit
+                  <span class="blue">
+                    <select id="Unit2" class="form-control" style="color:black;">
+                      <option value="">--Select--</option>
+                      <option value="SIT772">SIT772</option>
+                      <option value="SIT708">SIT708</option>
+                      <option value="SIT732">SIT732</option>
+                      <option value="SIT788">SIT788</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="form-group white">Trimester
+                  <span class="blue">
+                    <select class="form-control" style="color:black;">
+                      <option value="">--Select--</option>
+                      <option value="T1">T1</option>
+                      <option value="T2">T2</option>
+                      <option value="T3">T3</option>
+                    </select>
+                  </span>
+                </div>
+                <div class="form-group white">Year
+                  <span class="blue">
+                    <select class="form-control" style="color:black;">
+                      <option value="">--Select--</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                    </select>
+                  </span>
+                </div>
+
+
+              </form>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+              <!-- Main background -->
+
+              <div id="result" class="resultBar "></div>
+
+              <br>
+              <div id="main">
+                <div class="row">
+
+                  <!-- <button value="%" class="btn-style operator opera-bg fall-back">%</button> -->
+                  <!-- <button value="+" class="btn-style opera-bg value align operator">+</button> -->
+                </div>
+
+                <div class="rows">
+                  <button value="7" class="btn-style num-bg num first-child">7</button>
+                  <button value="8" class="btn-style num-bg num">8</button>
+                  <button value="9" class="btn-style num-bg num">9</button>
+                  <!-- <button value="-" class="btn-style opera-bg operator">-</button> -->
+                </div>
+
+                <div class="rows">
+                  <button value="4" class="btn-style num-bg num first-child">4</button>
+                  <button value="5" class="btn-style num-bg num">5</button>
+                  <button value="6" class="btn-style num-bg num">6</button>
+                  <!-- <button value="*" class="btn-style opera-bg operator">x</button> -->
+                </div>
+
+                <div class="rows">
+                  <button value="1" class="btn-style num-bg num first-child">1</button>
+                  <button value="2" class="btn-style num-bg num">2</button>
+                  <button value="3" class="btn-style num-bg num">3</button>
+                  <!-- <button value="/" class="btn-style opera-bg operator">/</button> -->
+                </div>
+
+                <div class="rows">
+                  <button value="0" class="btn-style num-bg num first-child zero">0</button>
+                  <!-- <button value="." class="btn-style num-bg period fall-back">.</button> -->
+                  <!-- <button value="=" id="eqn-bg" class="eqn align">=</button> -->
+                </div>
+
+              </div>
+
+
+            </div>
+            <div class="col-lg-3">
+
+              <button class="del-bg" id="delete">DEL</button>
+              <input value="CHECK" id="eqn-bg" type="submit">
+
+
+            </div>
+          </div>
+
+
         </div>
       </div>
-      
-
     </div>
-  </div>
 
-  <br>
-  <br>
-</div>
+    <br>
+    <br>
+  </div>
 </body>
 
 </html>
