@@ -1,7 +1,7 @@
 # Lab Entry Team B
 
 This application gives a platform to the lecturers to check the students unit's status.
-Project is LIVE at:
+Project is LIVE at: https://labentry.mybluemix.net/
 ## To Run the app locally
 
 1. [Install Node.js][]
