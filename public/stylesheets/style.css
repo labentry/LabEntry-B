@@ -60,7 +60,9 @@ h1 {
 	overflow:auto;
 }
 
-th { border-bottom: 1px solid #000;}
+th {
+	border-bottom: 1px solid #000;
+}
 
 th, td {
 	text-align: left;
@@ -77,7 +79,8 @@ pre {
 	padding: 0;
 	margin: 0;
 }
-table {
+table
+{
 	border-radius: 5px;
 }
   
@@ -208,7 +211,6 @@ margin-left: 4px;
 	transition: transform .5s ease;
 	text-align: left;
 }
-
 .deakin_header_image{
 	position: relative;
 	height: 45px;
@@ -216,12 +218,8 @@ margin-left: 4px;
 }
 .search
 {
-	float: right;
-    height: 75px;
-    font-size: 35px;
-    width: 600px;
-    border-radius: 70px 70px 70px 70px;
-    margin: 25px;
+	display: inline-block; 
+	width:400px;
 
 }
 .bg-image {
@@ -384,7 +382,8 @@ button
 {
 	border-radius: 5px;
 }
-.rows {
+.rows
+{
 	text-align: center;
 }
 .main-bg
@@ -448,7 +447,7 @@ button
     float: right;
 	border-radius: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	animation: entrance s ease-out 1;
+	animation: entrance 8s ease-out 1;
 	
 }
 #notCompleted
@@ -459,6 +458,22 @@ button
 	background-color: #f2dede;
 	border-color: #ebcccc;
 	/* width: 45%; */
+    padding: 8px;
+    /* height: 75px; */
+    float: right;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	animation: entrance 8s ease-out 1;
+}
+#noMatch
+{
+    border-color: #faf2cc;
+	border:1px solid red; 
+	display: none; 
+	background-color: #fcf8e3;
+    border-color: #faf2cc;
+    color: #8a6d3b;
+	width: 451px;
     padding: 8px;
     /* height: 75px; */
     float: right;
@@ -487,4 +502,9 @@ button
 	  
 	  /* transform: translateZ(-1000em); */
 	}
+  }
+  .xAlert
+  {
+	float: right; 
+	cursor: pointer;
   }

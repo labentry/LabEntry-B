@@ -29,43 +29,85 @@ $(document).ready(function () {
             console.log("Unit Selected:", unit);
             displayStudents(unit, tri, year);
         }
-         })
+
+    })
 
     $("#eqn-bg").click(function (e) {
+        // $('#checkID').submit(function (e) {
         e.preventDefault();
-        console.log("CheckID");
+
         var unit = document.getElementById("Unit2").value;
         var studentID = document.getElementById("result").innerText;
-        console.log(document.getElementById("Unit2").value);
-        console.log(document.getElementById("result").innerText);
-        if (unit != "" || studentID != "") {
-            // AJAX call
-            //if else 
-            var comp= false;
-            document.getElementById("alert").style.display="block";
-            document.getElementById("completed").style.display="none";
-            document.getElementById("notCompleted").style.display="none";
-            
-            for(var i=0;i<data.length;i++)
-            {
-                if( data[i].id==studentID && data[i].unit_enrolled==unit)
-                {
-                    comp=true; 
-                }
-                
-            }
-            if(comp)
-            {
-                document.getElementById("completed").style.display="block";
-            }
-            else
-            {
-                document.getElementById("notCompleted").style.display="block";
-            }
-            
-            
-            
+        var year=document.getElementById("year2").value;;
+        var trimester=document.getElementById("tri2").value;;
+        var comp = 0;
+        var pre = 0;
+        document.getElementById("alert").style.display = "block";
+        document.getElementById("completed").style.display = "none";
+        document.getElementById("notCompleted").style.display = "none";
+        document.getElementById("noMatch").style.display = "none";
+
+        if(unit=="")
+        {   
+            document.getElementById("msgHead").innerHTML = "ERROR";
+            document.getElementById("msg").innerHTML = "Please select a unit";
+            document.getElementById("noMatch").style.display = "block";
         }
+        else if(year=="")
+        {
+            document.getElementById("msgHead").innerHTML = "ERROR";
+            document.getElementById("msg").innerHTML = "Please select a year";
+            document.getElementById("noMatch").style.display = "block";   
+        }
+        else if(trimester=="")
+        {
+            document.getElementById("msgHead").innerHTML = "ERROR";
+            document.getElementById("msg").innerHTML = "Please select a trimester";
+            document.getElementById("noMatch").style.display = "block";   
+        }
+        else if(studentID.length<9)
+        {
+            document.getElementById("msgHead").innerHTML = "ERROR";
+            document.getElementById("msg").innerHTML = "Enter a student ID of 9 digits";
+            document.getElementById("noMatch").style.display = "block";
+        }
+        
+        
+
+        if (studentID.length == 9 && unit!="" && studentID!=""&& year!=""&& trimester!="")  {
+        
+
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].id == studentID && data[i].unit_enrolled == unit) {
+
+                    if (data[i].preRequisite == "Yes") {
+                        comp = +1;
+                        pre = 1;
+                    }
+                    else {
+                        pre = 2;
+                    }
+
+                }
+
+            }
+            if (pre == 1) {
+                document.getElementById("completed").style.display = "block";
+            }
+            else if (pre == 2) {
+                document.getElementById("notCompleted").style.display = "block";
+            }
+            else if (comp < 1) {
+                document.getElementById("msgHead").innerHTML = "No Match";
+                document.getElementById("msg").innerHTML = "No Record found in database";
+                document.getElementById("noMatch").style.display = "block";
+            }
+
+
+
+        }
+
     })
     // Method that reads and processes the selected file
     function upload(evt) {
@@ -97,17 +139,7 @@ $(document).ready(function () {
                     result.push(obj);
 
                 }
-
-                //return result; //JavaScript object
-                console.log(result); //JSON
-                // data = $.csv.toArrays(csvData);
-                // if (data && data.length > 0) {
-                //   alert('Imported -' + data.length + '- rows successfully!');
-                //   console.log(data);
-                // } else {
-                //     alert('No data to import!');
-                // }
-                result= result;
+                result = result;
                 viewData(result);
             };
             reader.onerror = function () {
@@ -142,27 +174,10 @@ $(document).ready(function () {
                 output = screen.innerHTML += num;
 
             }
-            
+
         }, false);
 
     }
-
-    document.querySelector(".zero").addEventListener("click", function () {
-
-        zero = this.value;
-
-        if (screen.innerHTML === "") {
-
-            output = screen.innerHTML = zero;
-        }
-
-        else if (screen.innerHTML === output) {
-
-            output = screen.innerHTML += zero;
-
-        }
-
-    }, false);
 
 
     document.querySelector("#delete").addEventListener("click", function () {
@@ -176,10 +191,8 @@ $(document).ready(function () {
 
 });
 
-function viewData(result)
-
-{
-    var viewTable="<table ><tr><td style='width: 80px;background-color: #13554b; text-align: center'>STUDENT ID</td>";
+function viewData(result) {
+    var viewTable = "<table ><tr><td style='width: 80px;background-color: #13554b; text-align: center'>STUDENT ID</td>";
     viewTable += "<td style='width: 80px; text-align: center;background-color: #13554b;'>STUDENT NAME</td>";
     viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>UNIT ENROLLED</td>";
     viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>YEAR</td>";
@@ -187,15 +200,15 @@ function viewData(result)
     viewTable += "<td style='width: 80px;  text-align: center;background-color: #13554b;'>PRE REQUISITE COMPLETED</td></tr>";
     viewTable += "<tbody id='myTable'>";
 
-    for (var i = 0; i < result.length-1; i++) {
-        
+    for (var i = 0; i < result.length - 1; i++) {
+
         viewTable += "<tr><td style='width: 80px; text-align: center;'>" + result[i].id + "</td>";
         viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].name + "</td>";
         viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].unit_enrolled + "</td>";
         viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].year + "</td>";
         viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].trimester + "</td>";
         viewTable += "<td     style='width: 80px; text-align: center;'>" + result[i].preRequisite + "</td></tr>";
-        
+
     }
 
     viewTable += "</tbody></table>"
@@ -239,7 +252,6 @@ function displayStudents(unit, tri, year) {
     document.getElementById("viewTable").style.display = "table-cell";
 }
 
-function closeAlert()
-{
-    document.getElementById("alert").style.display="none";
+function closeAlert() {
+    document.getElementById("alert").style.display = "none";
 }

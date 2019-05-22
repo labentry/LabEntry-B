@@ -26,7 +26,9 @@
     <div class="container">
       <div class="row">
 
-         <ul class="nav nav-tabs">
+        
+        
+        <ul class="nav nav-tabs">
           <li class="active">
             <a data-toggle="tab" href="#home">Unit Info</a>
           </li>
@@ -40,7 +42,7 @@
         <div class="tab-content">
           <div id="home" class="tab-pane fade in active">
             <br>
-            <div class="col-lg-3 filter">
+            <div class="col-lg-3 col-md-3 col-sm-3 filter">
 
               <form  id="form1" method="post">
                 <div class="form-group white">Unit
@@ -68,10 +70,10 @@
                   <span class="blue">
                     <select id="year" class="form-control" style="color:black;" required>
                       <option value="">--Select--</option>
-                      <option value="2016">2016</option>
-                      <option value="2017">2017</option>
-                      <option value="2018">2018</option>
                       <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
                     </select>
                   </span>
                 </div>
@@ -99,7 +101,7 @@
                    
                     <div>
                       
-                      <input class="form-control" style="display: inline-block; width:400px;" id="myInput" type="text" placeholder="Search..">
+                      <input class="form-control search" id="myInput" type="text" placeholder="Search..">
                       
                       <a download="somedata.csv" href="#" onclick="return ExcellentExport.csv(this, 'datatable');" style="float:right; margin-left: 320px;">
                         <img id="exportCSV" src="images/csv.png" class="csv"> </a>
@@ -117,11 +119,11 @@
           </div>
           <div id="menu1" class="tab-pane fade">
             <br>
-            <div class="col-lg-3 filter">
-              <form>
+            <div class="col-lg-3 col-md-3 col-sm-3 filter">
+              <form >
                 <div class="form-group white">Unit
                   <span class="blue">
-                    <select id="Unit2" class="form-control" style="color:black;">
+                    <select id="Unit2" class="form-control" style="color:black;" >
                       <option value="">--Select--</option>
                       <option value="SIT772">SIT772</option>
                       <option value="SIT708">SIT708</option>
@@ -132,7 +134,7 @@
                 </div>
                 <div class="form-group white">Trimester
                   <span class="blue">
-                    <select class="form-control" style="color:black;">
+                    <select id="tri2" class="form-control" style="color:black;" >
                       <option value="">--Select--</option>
                       <option value="T1">T1</option>
                       <option value="T2">T2</option>
@@ -142,7 +144,7 @@
                 </div>
                 <div class="form-group white">Year
                   <span class="blue">
-                    <select class="form-control" style="color:black;">
+                    <select  id="year2" class="form-control" style="color:black;" >
                       <option value="">--Select--</option>
                       <option value="2019">2019</option>
                       <option value="2018">2018</option>
@@ -155,11 +157,11 @@
 
               </form>
             </div>
-            <div class="col-lg-4 offset-lg-1">
+            <div class="col-lg-4 col-md-4 col-sm-4 offset-lg-1 offset-md-1 offset-sm-1">
               
               <div id="result" class="resultBar "></div>
+
               <br>
-              
               <div id="main">
                 <div class="row">
                 </div>
@@ -183,25 +185,27 @@
                 </div>
 
                 <div class="rows">
-                  <button value="0" class="btn-style num-bg num first-child zero">0</button>
+                  <button value="0" class="btn-style num-bg num first-child ">0</button>
                 </div>
 
               </div>
 
 
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-3 col-sm-3 ">
 
               <button class="del-bg" id="delete">DEL</button>
-              <input value="CHECK" id="eqn-bg" type="submit">
+              <!-- <input value="CHECK" id="eqn-bg" type="submit"> -->
+              <button id="eqn-bg">CHECK</button>
 
 
             </div>
+          
             <div id="alert">
                 <div  id="notCompleted">
                     <div>
                      <strong>Not Completed </strong> 
-                     <span style="float: right;cursor: pointer;"onclick="closeAlert()">X</span>
+                     <span class="xAlert" onclick="closeAlert()">X</span>
                     </div>
                     <div>
                       Student has not completed the required requisites for the unit
@@ -210,10 +214,19 @@
                   <div id="completed">
                       <div>
                           <strong>Completed </strong> 
-                          <span style="float: right; cursor: pointer;" onclick="closeAlert()">X</span>
+                          <span class="xAlert"  onclick="closeAlert()">X</span>
                       </div>
                       <div>
                           Student has completed the required requisites for the unit
+                      </div>
+                    </div>
+                    <div id="noMatch">
+                      <div>
+                          <strong id="msgHead">No Match Found </strong> 
+                          <span class="xAlert" onclick="closeAlert()">X</span>
+                      </div>
+                      <div id="msg">
+                          <!-- No Record found -->
                       </div>
                     </div>
                   </div>
@@ -227,7 +240,6 @@
 
     <br>
     <br>
-    
   </div>
 </body>
 
