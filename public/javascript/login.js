@@ -21,8 +21,7 @@ $(document).ready(function () {
                     console.log("Either Wrong username or password");
                 }
             }
-    
-        }
+    }
     });
 
 });
