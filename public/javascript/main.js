@@ -29,8 +29,7 @@ $(document).ready(function () {
             console.log("Unit Selected:", unit);
             displayStudents(unit, tri, year);
         }
-        
-    })
+         })
 
     $("#eqn-bg").click(function (e) {
         e.preventDefault();
