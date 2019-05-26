@@ -1,0 +1,80 @@
+<html>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+function addCode(key){
+	var code = document.forms[0].code;
+	if(code.value.length < 9){
+		code.value = code.value + key;
+	}
+	if(code.value.length == 9){
+		document.getElementById("message").style.display = "block";
+		setTimeout(submitForm,1000);	
+	}
+}
+
+function submitForm(){
+	document.forms[0].submit();
+}
+
+function emptyCode(){
+	document.forms[0].code.value = "";
+}
+</script>
+<style>
+body {
+	text-align:center;  
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}	
+#keypad {margin:auto; margin-top:50px;}
+
+#keypad tr td {
+	vertical-align:middle; 
+	text-align:center; 
+	border:1px solid #000000; 
+	font-size:25px; 
+	font-weight:bold; 
+	width:60px; 
+	height:60px; 
+	cursor:pointer; 
+	background-color:#666666; 
+	color:#CCCCCC;}
+#keypad tr td:hover {background-color:#999999; color:rgb(17, 121, 153);}
+
+.display {
+	width:130px; 
+	margin:10px auto auto auto; 
+	background-color:#000000; 
+	color:#ffffff; 
+	font-size:18px; 
+	border:1px solid #999999;
+}
+</style>
+<body>
+<form action="code.html" method="get">
+		<input type="text" name="code" value="" maxlength="9" class="display" readonly="readonly" />
+		<input type="submit" value="Submit">
+<table id="keypad" cellpadding="5" cellspacing="3">
+	<tr>
+    	<td onclick="addCode('1');">1</td>
+        <td onclick="addCode('2');">2</td>
+        <td onclick="addCode('3');">3</td>
+    </tr>
+    <tr>
+    	<td onclick="addCode('4');">4</td>
+        <td onclick="addCode('5');">5</td>
+        <td onclick="addCode('6');">6</td>
+    </tr>
+    <tr>
+    	<td onclick="addCode('7');">7</td>
+        <td onclick="addCode('8');">8</td>
+        <td onclick="addCode('9');">9</td>
+    </tr>
+    <tr>
+    	<td onclick="addCode('*');">*</td>
+        <td onclick="addCode('0');">0</td>
+        <td onclick="addCode('<');"><</td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
